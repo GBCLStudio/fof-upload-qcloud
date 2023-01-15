@@ -1,0 +1,42 @@
+{
+  "name": "gbcl/fof-upload-ext-qcloud",
+  "description": "A extension for FoF Upload ",
+  "keywords": [
+    "flarum",
+    "upload",
+    "file"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+      "fof/upload": "^1.2",
+      "big-dream/cdn-url-auth": "0.0.2",
+      "freyo/flysystem-qcloud-cos-v5": "^2.0"
+  },
+  "authors": [
+    {
+      "name": "GBCLStudio",
+      "email": "support@gbclstudio.cn",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "GBCLStudio\\UploadExtQcloud\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "FoF Upload QCloud",
+        "category": "feature",
+        "icon": {
+            "name": "fas fa-file-upload",
+            "backgroundColor": "#e74c3c",
+            "color": "#fff"
+        }
+    },
+    "flagrow": {
+      "discuss": ""
+    }
+  }
+}

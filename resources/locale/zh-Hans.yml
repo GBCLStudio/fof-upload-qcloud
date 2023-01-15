@@ -1,0 +1,44 @@
+fof-upload:
+  admin:
+    upload_methods:
+      qcloud: 腾讯COS
+
+gbcl-fof-upload-qcloud:
+  admin:
+    labels:
+      qcloudLabel:
+        title: 腾讯 COS 存储设置
+        region: 区域
+        regionOption:
+          ap-beijing: 中国 北京
+          ap-chengdu: 中国 成都
+          ap-chongqing: 中国 重庆
+          ap-guangzhou: 中国 广州
+          ap-nanjing: 中国 南京
+          ap-shanghai: 中国 上海
+          ap-tokyo: 日本 东京
+          eu-frankfurt: 德国 法兰克福
+          na-siliconvalley: 美国 硅谷
+        secretId: secret Id
+        secretKey: Secret Key
+        appId: 账户 ID
+        domain: 绑定CDN域名
+        fileRetrievingSignatureToken: 文件鉴权密钥
+
+      qcloudHelp:
+        region: 仅支持大部分常用区域
+        secretId: 您可以在个人秘钥管理页查看找到您的 SecretId ：https://console.cloud.tencent.com/capi
+        secretKey: 您可以在个人秘钥管理页查看找到您的 SecretKey ：https://console.cloud.tencent.com/capi
+        appId: 您可以在个人秘钥管理页查看找到您的 AppId ：https://console.cloud.tencent.com/capi
+        domain: 您的 COS CDN加速域名
+        fileRetrievingSignatureToken: |-
+          （可选的）使用文件鉴权密钥可以实现防盗链功能。
+          本插件使用方法 A 作为文件鉴权方式。
+
+    template:
+      audio:
+        name: MP3 音频模板
+        description: MP3 音频模板
+      video-preview:
+        name: MP4 视频预览模板
+        description: MP4 视频预览模板

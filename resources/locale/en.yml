@@ -1,0 +1,44 @@
+fof-upload:
+  admin:
+    upload_methods:
+      qcloud: TencentCloud COS
+
+gbcl-fof-upload-qcloud:
+  admin:
+    labels:
+      qcloudLabel:
+        title: Tencent COS storage settings
+        region: region
+        regionOption:
+          ap-beijing: Beijing, China
+          ap-chengdu: Chengdu, China
+          ap-chongqing: Chongqing, China
+          ap-guangzhou: Guangzhou, China
+          ap-nanjing: Nanjing, China
+          ap-shanghai: Shanghai, China
+          ap-tokyo: Tokyo, Japan
+          eu-frankfurt: Frankfurt, Germany
+          na-siliconvalley: Silicon Valley, USA
+        secretId: secretId
+        secretKey: SecretKey
+        appId: Account ID
+        domain: bind CDN domain name
+        fileRetrievingSignatureToken: file authentication key
+
+      qcloudHelp:
+        region: only supports most commonly used regions
+        secretId: You can find your SecretId on the personal secret key management page：https://console.cloud.tencent.com/capi
+        secretKey: You can find your SecretKey on the personal secret key management page：https://console.cloud.tencent.com/capi
+        appId: You can find your AppId on the personal key management page：https://console.cloud.tencent.com/capi
+        domain: Your COS CDN accelerated domain name
+        fileRetrievingSignatureToken: |-
+          (Optional) The anti-leech function can be realized by using the file authentication key.
+          This plugin uses method A as the file authentication method.
+
+    template:
+      audio:
+        name: MP3 audio template
+        description: MP3 audio template
+      video-preview:
+        name: MP4 video preview template
+        description: MP4 video preview template
