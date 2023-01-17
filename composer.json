@@ -1,5 +1,5 @@
 {
-  "name": "gbcl/fof-upload-ext-qcloud",
+  "name": "gbcl/fof-upload-qcloud",
   "description": "A extension for FoF Upload ",
   "keywords": [
     "flarum",
@@ -11,7 +11,7 @@
   "require": {
       "fof/upload": "^1.2",
       "big-dream/cdn-url-auth": "0.0.2",
-      "freyo/flysystem-qcloud-cos-v5": "^2.0"
+      "overtrue/flysystem-cos": "^3.0"
   },
   "authors": [
     {

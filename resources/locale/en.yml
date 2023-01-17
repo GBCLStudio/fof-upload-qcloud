@@ -1,7 +1,7 @@
 fof-upload:
   admin:
     upload_methods:
-      qcloud: TencentCloud COS
+      qcloud: Tencent COS
 
 gbcl-fof-upload-qcloud:
   admin:
@@ -19,26 +19,44 @@ gbcl-fof-upload-qcloud:
           ap-tokyo: Tokyo, Japan
           eu-frankfurt: Frankfurt, Germany
           na-siliconvalley: Silicon Valley, USA
+        useHttps: Whether to upload via Https
+        schemeOption:
+          Yes: yes
+          No: no
         secretId: secretId
         secretKey: SecretKey
         appId: Account ID
         domain: bind CDN domain name
+        bucket: bucket name
         fileRetrievingSignatureToken: file authentication key
+        fileRetrievingSignatureTokenName: file authentication key parameter
+        fileRetrievingSignatureTime: Valid time of file authentication link
 
       qcloudHelp:
         region: only supports most commonly used regions
         secretId: You can find your SecretId on the personal secret key management page：https://console.cloud.tencent.com/capi
         secretKey: You can find your SecretKey on the personal secret key management page：https://console.cloud.tencent.com/capi
         appId: You can find your AppId on the personal key management page：https://console.cloud.tencent.com/capi
-        domain: Your COS CDN accelerated domain name
+        domain: Your COS CDN acceleration domain name (requires http:// or https:// prefix)
+        bucket: your bucket name
         fileRetrievingSignatureToken: |-
           (Optional) The anti-leech function can be realized by using the file authentication key.
           This plugin uses method A as the file authentication method.
+          Please make sure that all settings have been completed before use.
+        fileRetrievingSignatureTokenName: |-
+          (Optional) Authentication parameters when using file authentication (such as domain.com/url.jpg?sign=xxx)
+          Please fill in according to the corresponding parameter settings.
+        fileRetrievingSignatureTime: |-
+          (Optional) Link expiration time when using file authentication, in seconds
+          Please fill in according to the corresponding parameter settings. If not filled, the default is 1800 seconds
 
     template:
       audio:
         name: MP3 audio template
-        description: MP3 audio template
+        description: A template for playing MP3 audio
       video-preview:
         name: MP4 video preview template
-        description: MP4 video preview template
+        description: A template for previewing MP4 videos
+      image-preview:
+        name: COS image preview template
+        description: COS image preview template

@@ -11,7 +11,10 @@
 
 namespace GBCLStudio\UploadExtQcloud;
 
-use GBCLStudio\UploadExtQcloud\Formatters\PreviewFormatter;
+use Flarum\Api\Serializer\PostSerializer;
+use GBCLStudio\UploadExtQcloud\Formatters\QcloudVideoFormatter;
+use GBCLStudio\UploadExtQcloud\Formatters\QcloudAudioFormatter;
+use GBCLStudio\UploadExtQcloud\Formatters\QcloudPreviewFormatter;
 use GBCLStudio\UploadExtQcloud\Listeners\AdapterInstantiateListener;
 use GBCLStudio\UploadExtQcloud\Listeners\AdapterRegisterListener;
 use GBCLStudio\UploadExtQcloud\Providers\QcloudProvider;
@@ -32,7 +35,16 @@ return [
     (new Extend\View())
         ->namespace('gbcl-fof-upload-qcloud.templates', __DIR__ . '/resources/templates'),
 
+    (new Extend\ApiSerializer(PostSerializer::class))
+        ->attributes(Extenders\AddCurrentPostAttributes::class),
+
     (new Extend\ServiceProvider())
         ->register(QcloudProvider::class),
+
+    (new Extend\Formatter())
+        ->render(QcloudVideoFormatter::class)
+        ->render(QcloudAudioFormatter::class)
+        ->render(QcloudPreviewFormatter::class)
+    ,
 ];
 
