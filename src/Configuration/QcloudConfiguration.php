@@ -38,7 +38,7 @@ class QcloudConfiguration
             $this->appId = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.appId');
             $this->cdn = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.domain');
             $this->bucket = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.bucket');
-            $this->useHttps = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.useHttps', 'no');
+            $this->useHttps = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.useHttps', 'disableTls');
             $this->fileSignatureToken = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureToken', '');
             $this->fileSignatureTokenName = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTokenName', 'sign');
             $this->fileSignatureTime = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTime', '1800');
@@ -49,7 +49,7 @@ class QcloudConfiguration
         if ($this->fileSignatureTime == null || $this->fileSignatureTime == 0) {
             $this->fileSignatureTime = '1800';
         }
-        if ($this->useHttps == 'Yes') {
+        if ($this->useHttps == 'enableTls') {
             $this->useHttps = 'true';
         }else{
             $this->useHttps = 'false';

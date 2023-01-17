@@ -84,8 +84,8 @@ app.initializers.add('gbcl-fof-upload-qcloud', function (app) {
                 label: label('useHttps'),
                 type: 'select',
                 options: {
-                'Yes': label('schemeOption.true'),
-                'No': label('schemeOption.false'),
+                'enableTls': label('schemeOption.enableTls'),
+                'disableTls': label('schemeOption.disableTls'),
                 },
                 default: 'No',
             },

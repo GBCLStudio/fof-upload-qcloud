@@ -21,8 +21,8 @@ gbcl-fof-upload-qcloud:
           na-siliconvalley: 美国 硅谷
         useHttps: 是否通过 Https 上传
         schemeOption:
-          Yes: 是
-          No: 否
+          enableTls: 是
+          disableTls: 否
         secretId: secret Id
         secretKey: Secret Key
         appId: 账户 ID

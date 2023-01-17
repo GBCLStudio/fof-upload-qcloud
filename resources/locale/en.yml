@@ -21,8 +21,8 @@ gbcl-fof-upload-qcloud:
           na-siliconvalley: Silicon Valley, USA
         useHttps: Whether to upload via Https
         schemeOption:
-          Yes: yes
-          No: no
+          enableTls: enable
+          disableTls: disable
         secretId: secretId
         secretKey: SecretKey
         appId: Account ID
