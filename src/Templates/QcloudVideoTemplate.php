@@ -2,14 +2,17 @@
 
 namespace GBCLStudio\UploadExtQcloud\Templates;
 
+use FoF\Upload\File;
 use FoF\Upload\Templates\AbstractTextFormatterTemplate;
 
 class QcloudVideoTemplate extends AbstractTextFormatterTemplate
 {
+    public const templateName = "upl-qcloud-video";
+
     /**
      * @var string
      */
-    protected $tag = 'video';
+    protected $tag = 'qcloud-video';
 
     /**
      * {@inheritdoc}
@@ -34,7 +37,7 @@ class QcloudVideoTemplate extends AbstractTextFormatterTemplate
      */
     public function template(): string
     {
-        return $this->getView('gbcl-fof-upload-qcloud::Qcloud-video-preview');
+        return $this->getView('gbcl-fof-upload-qcloud.templates::qcloud-video');
     }
 
     /**
@@ -44,6 +47,10 @@ class QcloudVideoTemplate extends AbstractTextFormatterTemplate
      */
     public function bbcode(): string
     {
-        return '[upl-qcloud-video uuid={IDENTIFIER} size={SIMPLETEXT2} url={URL}]{SIMPLETEXT1}[/upl-video]';
+        return '[upl-qcloud-video uuid={IDENTIFIER} preview_uri={URL} fullscreen_uri={URL}]';
+    }
+    public function preview(File $file): string
+    {
+        return "[upl-qcloud-video uuid={$file->uuid} preview_uri={$file->url} fullscreen_uri={URL}]";
     }
 }

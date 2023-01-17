@@ -5,6 +5,7 @@ namespace GBCLStudio\UploadExtQcloud\Providers;
 use GBCLStudio\UploadExtQcloud\Configuration\QcloudConfiguration;
 use GBCLStudio\UploadExtQcloud\Templates\QcloudAudioTemplate;
 use GBCLStudio\UploadExtQcloud\Templates\QcloudVideoTemplate;
+use GBCLStudio\UploadExtQcloud\Templates\QcloudPreviewTemplate;
 use Flarum\Foundation\AbstractServiceProvider;
 use FoF\Upload\Helpers\Util;
 
@@ -19,5 +20,6 @@ class QcloudProvider extends AbstractServiceProvider
 
         $util->addRenderTemplate($this->container->make(QcloudAudioTemplate::class));
         $util->addRenderTemplate($this->container->make(QcloudVideoTemplate::class));
+        $util->addRenderTemplate($this->container->make(QcloudPreviewTemplate::class));
     }
 }

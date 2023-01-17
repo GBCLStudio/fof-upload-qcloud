@@ -10,57 +10,50 @@ use FoF\Upload\File;
 class QcloudConfiguration
 {
 
-    public array $QcloudConfig;
-
     /**
      * @var string
      */
-    private $fileSignatureToken;
+    public string $fileSignatureToken;
+    public string $region;
+    public string $secretId;
+    public string $secretKey;
+    public string $appId;
+    public string $cdn;
+    public string $bucket;
+    public string $useHttps;
+    public string $fileSignatureTokenName;
+    public $fileSignatureTime;
 
-
-    public function __construct(SettingsRepositoryInterface $settings)
+    public function __construct()
     {
-        $config = [
-            'region' => $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.region', 'ap-beijing'),
-            'credentials' => [
-                'secretId' => $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretId'),
-                'secretKey' => $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretKey'),
-                'appId '=> $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.appId')
-            ],
-            'cdn' => $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.domain'),
-            'bucket' => $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.bucket'),
-        ];
-        if ($config['region'] == null || strlen($config['region']) == 0) {
-            $config['region'] = 'ap-beijing';
+        /**
+         * @var SettingsRepositoryInterface $settings
+         */
+
+        $settings = app(SettingsRepositoryInterface::class);
+
+            $this->region = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.region', 'ap-beijing');
+            $this->secretId = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretId');
+            $this->secretKey = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretKey');
+            $this->appId = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.appId');
+            $this->cdn = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.domain');
+            $this->bucket = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.bucket');
+            $this->useHttps = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.useHttps', 'no');
+            $this->fileSignatureToken = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureToken', '');
+            $this->fileSignatureTokenName = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTokenName', 'sign');
+            $this->fileSignatureTime = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTime', '1800');
+
+        if ($this->region == null || strlen($this->region) == 0) {
+            $this->region = 'ap-beijing';
         }
-        $this->fileSignatureToken = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.SignatureToken', '');
-
-        $this->QcloudConfig = $config;
-    }
-
-    /**
-     * @param $ret
-     * @return string
-     */
-    private function read_template($ret): string
-    {
-        if (!is_string($ret)) {
-            $ret = '';
+        if ($this->fileSignatureTime == null || $this->fileSignatureTime == 0) {
+            $this->fileSignatureTime = '1800';
         }
-
-        if (strlen($ret) == 0) {
-            return '';
+        if ($this->useHttps == 'Yes') {
+            $this->useHttps = 'true';
+        }else{
+            $this->useHttps = 'false';
         }
-
-        if (!str_starts_with($ret, '~')) {
-            $ret = '~' . $ret;
-        }
-
-        if (!str_contains($ret, '.')) {
-            $ret .= '.image';
-        }
-
-        return $ret;
     }
 
     /**
@@ -80,26 +73,25 @@ class QcloudConfiguration
     {
         $auth = new Tencent(
             $this->fileSignatureToken,
-            'sign',
+            $this->fileSignatureTokenName,
             't',
             false
         );
-
-        return $auth->typeA($signPath);
+        $time = time() + $this->fileSignatureTime;
+        return $auth->typeA($signPath,$time);
     }
 
     /**
      * @param $file File
-     * @param $template string
      * @return string
      * @throws Exception
      */
-    public function generateUrl(File $file, string $template): string
+    public function generateUrl(File $file): string
     {
         if ($this->needSignature()) {
-            return "//" . $this->signPath('/' . $file->path);
+            return $this->cdn . $this->signPath('/' . $file->path);
         } else {
-            return "//" . $this->QcloudConfig['domain'] . '/' . $file->path;
+            return $this->cdn . '/' . $file->path;
         }
     }
 }

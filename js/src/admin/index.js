@@ -80,6 +80,20 @@ app.initializers.add('gbcl-fof-upload-qcloud', function (app) {
 
         .registerSetting(
             {
+                setting: setting('useHttps'),
+                label: label('useHttps'),
+                type: 'select',
+                options: {
+                'Yes': label('schemeOption.true'),
+                'No': label('schemeOption.false'),
+                },
+                default: 'No',
+            },
+            500
+        )
+
+        .registerSetting(
+            {
                 setting: setting('fileRetrievingSignatureToken'),
                 label: label('fileRetrievingSignatureToken'),
                 help: help('fileRetrievingSignatureToken'),
@@ -87,4 +101,22 @@ app.initializers.add('gbcl-fof-upload-qcloud', function (app) {
             },
             400
         )
+        .registerSetting(
+            {
+                setting: setting('fileRetrievingSignatureTokenName'),
+                label: label('fileRetrievingSignatureTokenName'),
+                help: help('fileRetrievingSignatureTokenName'),
+                type: 'text',
+        },
+        300
+      )
+        .registerSetting(
+            {
+                setting: setting('fileRetrievingSignatureTime'),
+                label: label('fileRetrievingSignatureTime'),
+                help: help('fileRetrievingSignatureTime'),
+                type: 'text',
+        },
+         200
+      )
 });
