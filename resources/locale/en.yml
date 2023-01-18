@@ -38,7 +38,7 @@ gbcl-fof-upload-qcloud:
         secretKey: You can find your SecretKey on the personal secret key management page：https://console.cloud.tencent.com/capi
         appId: You can find your AppId on the personal key management page：https://console.cloud.tencent.com/capi
         domain: Your COS CDN acceleration domain name (requires http:// or https:// prefix)
-        bucket: your bucket name
+        bucket: Your bucket name, your-bucketname-id.cos.region.xxx.com your-bucketname in this string
         fileRetrievingSignatureToken: |-
           (Optional) The anti-leech function can be realized by using the file authentication key.
           This plugin uses method A as the file authentication method.
@@ -60,3 +60,10 @@ gbcl-fof-upload-qcloud:
       image-preview:
         name: COS image preview template
         description: COS image preview template
+      download:
+        name: COS file download template
+        description: COS file download template
+      pdf:
+        name: COS pdf file preview template
+        description: COS pdf file preview template
+

@@ -6,7 +6,9 @@ use Exception;
 use GBCLStudio\UploadExtQcloud\Configuration\QcloudConfiguration;
 use GBCLStudio\UploadExtQcloud\Templates\QcloudPreviewTemplate;
 use GBCLStudio\UploadExtQcloud\Templates\QcloudAudioTemplate;
+use GBCLStudio\UploadExtQcloud\Templates\QcloudDownloadTemplate;
 use GBCLStudio\UploadExtQcloud\Templates\QcloudVideoTemplate;
+use GBCLStudio\UploadExtQcloud\Templates\QcloudPdfTemplate;
 use Flarum\Api\Serializer\PostSerializer;
 use Flarum\Post\Post;
 use FoF\Upload\Repositories\FileRepository;
@@ -59,7 +61,7 @@ class AddCurrentPostAttributes
      */
     private function replaceQcloudBBCode($content): string
     {
-        $regexpr = '/\[upl-qcloud-((video|audio|generic)-)?preview [^]]+]/i';
+        $regexpr = '/\[upl-qcloud-((video|audio|download|pdf)-)?preview [^]]+]/i';
 
         return preg_replace_callback($regexpr, function ($s) {
             $s = $s[0];
@@ -70,6 +72,10 @@ class AddCurrentPostAttributes
                 $feature = QcloudVideoTemplate::templateName;
             } else if (Str::startsWith($s, "[upl-qcloud-audio ")) {
                 $feature = QcloudAudioTemplate::templateName;
+            } else if (Str::startsWith($s, "[upl-qcloud-download ")) {
+                $feature = QcloudDownloadTemplate::templateName;
+            } else if (Str::startsWith($s, "[upl-qcloud-pdf ")) {
+                $feature = QcloudPdfTemplate::templateName;
             } else {
                 return "";
             }
@@ -101,11 +107,17 @@ class AddCurrentPostAttributes
             if ($feature == QcloudPreviewTemplate::templateName) {
                 $previewUri = $this->config->generateUrl($file);
                 $fullscreenUri = $this->config->generateUrl($file);
-                return "[${feature} uuid=${uuid} preview_uri=${previewUri} fullscreen_uri=${fullscreenUri} base_name=${filename}]";
+                return "[${feature} uuid=${uuid} preview_uri=${previewUri} fullscreen_uri=${fullscreenUri}]";
             } else if ($feature == QcloudVideoTemplate::templateName) {
                 $previewUri = $this->config->generateUrl($file);
                 return "[${feature} uuid=${uuid} preview_uri=${previewUri} fullscreen_uri=${fullscreenUri} base_name=${filename}]";
             } else if ($feature == QcloudAudioTemplate::templateName) {
+                $previewUri = $this->config->generateUrl($file);
+                return "[${feature} uuid=${uuid} preview_uri=${previewUri} fullscreen_uri=${fullscreenUri} base_name=${filename}]";
+            } else if ($feature == QcloudDownloadTemplate::templateName) {
+                $size = $file->humanSize;
+                return "[$feature uuid={$file->uuid} name=${filename} size={$size}]";
+            } else if ($feature == QcloudPdfTemplate::templateName) {
                 $previewUri = $this->config->generateUrl($file);
                 return "[${feature} uuid=${uuid} preview_uri=${previewUri} fullscreen_uri=${fullscreenUri} base_name=${filename}]";
             }else {

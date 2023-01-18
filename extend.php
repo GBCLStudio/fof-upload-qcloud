@@ -12,6 +12,8 @@
 namespace GBCLStudio\UploadExtQcloud;
 
 use Flarum\Api\Serializer\PostSerializer;
+use GBCLStudio\UploadExtQcloud\Formatters\QcloudDownloadFormatter;
+use GBCLStudio\UploadExtQcloud\Formatters\QcloudPdfFormatter;
 use GBCLStudio\UploadExtQcloud\Formatters\QcloudVideoFormatter;
 use GBCLStudio\UploadExtQcloud\Formatters\QcloudAudioFormatter;
 use GBCLStudio\UploadExtQcloud\Formatters\QcloudPreviewFormatter;
@@ -23,12 +25,18 @@ use FoF\Upload\Events\Adapter\Collecting;
 use FoF\Upload\Events\Adapter\Instantiate;
 
 return [
+    (new Extend\Routes('api'))
+        ->get('/gbcl/fof-qcloud/download/{uuid}/{post}/{csrf}', 'gbcl-fof-qcloud.download', Api\Controllers\DownloadController::class),
+
     (new Extend\Event)
         ->listen(Collecting::class, AdapterRegisterListener::class)
         ->listen(Instantiate::class, AdapterInstantiateListener::class),
 
     (new Extend\Frontend('admin'))
         ->js(__DIR__ . '/js/dist/admin.js'),
+
+    (new Extend\Frontend('forum'))
+        ->js(__DIR__.'/js/dist/forum.js'),
 
     new Extend\Locales(__DIR__ . '/resources/locale'),
 
@@ -45,6 +53,8 @@ return [
         ->render(QcloudVideoFormatter::class)
         ->render(QcloudAudioFormatter::class)
         ->render(QcloudPreviewFormatter::class)
+        ->render(QcloudDownloadFormatter::class)
+        ->render(QcloudPdfFormatter::class)
     ,
 ];
 
