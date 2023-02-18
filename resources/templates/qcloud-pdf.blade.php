@@ -1,5 +1,3 @@
-<script src=“https://unpkg.com/pdfobject@2.2.4/pdfobject.min.js"></script>
-
 <style type="text/css">
     .qcloud-pdf-wrap{
         width: 100%;
