@@ -22,10 +22,10 @@ function loadScript(url, callback) {
 	document.body.appendChild(script);
 }
 loadScript("https://cdn.jsdelivr.net/npm/dplayer@latest/dist/DPlayer.min.js", function() {
-    alert('[gbcl/fof-upload-qcloud] Loading dependency "Dplayer" succeeded');
+    console.log('[gbcl/fof-upload-qcloud] Loading dependency "Dplayer" succeeded');
 });
 loadScript("https://cdn.jsdelivr.net/npm/pdfobject@latest/pdfobject.min.js", function() {
-    alert('[gbcl/fof-upload-qcloud] Loading dependency "PDFObject" succeeded');
+    console.log('[gbcl/fof-upload-qcloud] Loading dependency "PDFObject" succeeded');
 });
 app.initializers.add('gbcl-fof-upload-qcloud', () => {
   downloadButtonInteraction();
