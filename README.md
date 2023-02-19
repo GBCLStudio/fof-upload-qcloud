@@ -16,11 +16,12 @@ composer require gbcl/fof-upload-qcloud
 
 ```sh
 composer update gbcl/fof-upload-qcloud
+php flarum cache:clear
 ```
 
 ### Features
 
-- Support audio/picture/video/pdf preview and common download(video uses DPlayer)
+- Support audio/picture/video/pdf preview and common download
 - Support file signature and custom signatureToken name/time
 - Support most commonly used regions
 
@@ -29,3 +30,10 @@ composer update gbcl/fof-upload-qcloud
 - [Packagist](https://packagist.org/packages/gbcl/fof-upload-qcloud)
 - [discuss](https://discuss.flarum.org.cn/d/4058)
 
+### Special
+
+VideoTemplate is using DPlayer@1.27 By [DIYgod](https://github.com/DIYgod)
+
+PdfTemplate is using PDFObject@latest By [PDFObject](https://pdfobject.com)
+
+Support my works at [afdian.net](https://afdian.net/@GBCLStudio)

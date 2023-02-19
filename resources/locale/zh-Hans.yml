@@ -52,11 +52,11 @@ gbcl-fof-upload-qcloud:
 
     template:
       audio:
-        name: MP3 音频模板
-        description: 用于播放 MP3音频 的模板
+        name: COS MP3 音频模板
+        description: 用于播放 上传到COS中的MP3 音频模板
       video-preview:
-        name: MP4 视频预览模板
-        description: 用于预览 MP4视频 的模板
+        name: COS MP4 视频预览模板
+        description: 用于预览 上传到COS中的MP4 视频模板
       image-preview:
         name: COS 图片预览模板
         description: COS 图片预览模板

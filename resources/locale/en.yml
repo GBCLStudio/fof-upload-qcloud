@@ -52,11 +52,11 @@ gbcl-fof-upload-qcloud:
 
     template:
       audio:
-        name: MP3 audio template
-        description: A template for playing MP3 audio
+        name: COS MP3 audio template
+        description: A template for playing COS MP3 audio
       video-preview:
-        name: MP4 video preview template
-        description: A template for previewing MP4 videos
+        name: COS MP4 video preview template
+        description: A template for previewing COS MP4 videos
       image-preview:
         name: COS image preview template
         description: COS image preview template
