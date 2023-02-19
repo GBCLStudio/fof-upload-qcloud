@@ -5,16 +5,6 @@ import CommentPost from "flarum/forum/components/CommentPost";
 import { extend } from "flarum/common/extend";
 import downloadButtonInteraction from './downloadButtonInteraction';
 
-const getHexBgColor = async () => {
-	var str = [];
-	var rgb = document.getElementById('body').style.backgroundColor.split('(');
-	for(var k = 0; k < 3; k++){
-		str[k] = parseInt(rgb[1].split(',')[k]).toString(16);
-	}
-	str = '#'+str[0]+str[1]+str[2];
-	return str;
-}
-
 
 const loadScript = async (extension) => {
     if (extension.loaded) {
@@ -58,7 +48,7 @@ const createDpInstance = (
 
 	const dp = new DPlayer({
 		container: container,
-		theme: getHexBgColor(),
+		theme: "#b7daff",
 		preload: "auto",
 		volume: 0.7,
 		loop: false,
