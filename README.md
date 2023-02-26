@@ -25,6 +25,13 @@ php flarum cache:clear
 - Support file signature and custom signatureToken name/time
 - Support most commonly used regions
 
+### Screenshots
+
+![image.png](https://s2.loli.net/2023/02/26/qCa8pdz2vhytSxK.png)
+![image.png](https://s2.loli.net/2023/02/26/yr1Ldto9ikjqvUn.png)
+![image.png](https://s2.loli.net/2023/02/26/Pj6uGyXKz8nisNx.png)
+![image.png](https://s2.loli.net/2023/02/26/WNmAbqMP2seGf5n.png)
+
 ### Links
 
 - [Packagist](https://packagist.org/packages/gbcl/fof-upload-qcloud)
