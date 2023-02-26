@@ -4,6 +4,10 @@ fof-upload:
       qcloud: Tencent COS
 
 gbcl-fof-upload-qcloud:
+  forum:
+    pdf:
+      fallbackNotice1: This browser does not support inline PDFs. Please download the PDF to view it
+      fallbackNotice2: Click here to download PDF
   admin:
     labels:
       qcloudLabel:

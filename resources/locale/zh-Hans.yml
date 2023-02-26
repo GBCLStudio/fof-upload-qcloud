@@ -4,6 +4,10 @@ fof-upload:
       qcloud: 腾讯COS
 
 gbcl-fof-upload-qcloud:
+  forum:
+    pdf:
+      fallbackNotice1: 您的浏览器不支持在线预览PDF文件，请点击以下链接来下载
+      fallbackNotice2: 点击此处下载PDF文件
   admin:
     labels:
       qcloudLabel:
