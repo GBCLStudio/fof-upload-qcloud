@@ -22,8 +22,8 @@ class QcloudDownloadFormatter
      * Configure rendering for text preview uploads.
      *
      * @param Renderer $renderer
-     * @param mixed $context
-     * @param string $xml
+     * @param mixed    $context
+     * @param string   $xml
      *
      * @return string $xml to be rendered
      */
@@ -31,8 +31,9 @@ class QcloudDownloadFormatter
     {
         return Utils::replaceAttributes($xml, 'UPL-QCLOUD-DOWNLOAD', function ($attributes) {
             $file = $this->files->findByUuid($attributes['uuid']);
-            $attributes["name"] = $file->base_name;
-            $attributes["size"] = $file->humanSize;
+            $attributes['name'] = $file->base_name;
+            $attributes['size'] = $file->humanSize;
+
             return $attributes;
         });
     }

@@ -2,8 +2,8 @@
 
 namespace GBCLStudio\UploadExtQcloud\Formatters;
 
-use GBCLStudio\UploadExtQcloud\QcloudConfiguration;
 use FoF\Upload\Repositories\FileRepository;
+use GBCLStudio\UploadExtQcloud\QcloudConfiguration;
 use s9e\TextFormatter\Renderer;
 use s9e\TextFormatter\Utils;
 
@@ -19,7 +19,6 @@ class QcloudPreviewFormatter
      */
     private $config;
 
-
     public function __construct(FileRepository $files, QcloudConfiguration $config)
     {
         $this->files = $files;
@@ -30,8 +29,8 @@ class QcloudPreviewFormatter
      * Configure rendering for text preview uploads.
      *
      * @param Renderer $renderer
-     * @param mixed $context
-     * @param string $xml
+     * @param mixed    $context
+     * @param string   $xml
      *
      * @return string $xml to be rendered
      */
@@ -39,9 +38,10 @@ class QcloudPreviewFormatter
     {
         return Utils::replaceAttributes($xml, 'UPL-QCLOUD-AUDIO-PREVIEW', function ($attributes) {
             $file = $this->files->findByUuid($attributes['uuid']);
-            $attributes["preview_uri"] = $this->config->generateUrl($file);
-            $attributes["fullscreen_uri"] = $this->config->generateUrl($file);
-            $attributes["base_name"] = $file->base_name;
+            $attributes['preview_uri'] = $this->config->generateUrl($file);
+            $attributes['fullscreen_uri'] = $this->config->generateUrl($file);
+            $attributes['base_name'] = $file->base_name;
+
             return $attributes;
         });
     }

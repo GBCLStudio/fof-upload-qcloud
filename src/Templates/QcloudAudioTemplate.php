@@ -7,7 +7,7 @@ use FoF\Upload\Templates\AbstractTextFormatterTemplate;
 
 class QcloudAudioTemplate extends AbstractTextFormatterTemplate
 {
-    public const templateName = "upl-qcloud-audio";
+    public const templateName = 'upl-qcloud-audio';
 
     /**
      * @var string
@@ -54,5 +54,4 @@ class QcloudAudioTemplate extends AbstractTextFormatterTemplate
     {
         return "[upl-qcloud-audio uuid={$file->uuid} preview_uri={$file->url} fullscreen_uri={URL}]";
     }
-
 }

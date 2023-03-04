@@ -2,9 +2,9 @@
 
 namespace GBCLStudio\UploadExtQcloud\Listeners;
 
+use FoF\Upload\Events\Adapter\Instantiate;
 use GBCLStudio\UploadExtQcloud\Adapters\QcloudFofAdapter;
 use GBCLStudio\UploadExtQcloud\Configuration\QcloudConfiguration;
-use FoF\Upload\Events\Adapter\Instantiate;
 
 class AdapterInstantiateListener
 {
