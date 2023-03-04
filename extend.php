@@ -52,7 +52,7 @@ return [
     (new Extend\Formatter())
         ->render(QcloudVideoFormatter::class)
         ->render(QcloudAudioFormatter::class)
-        ->render(QcloudPreviewFormatter::class)
         ->render(QcloudDownloadFormatter::class)
+        ->render(QcloudPreviewFormatter::class)
         ->render(QcloudPdfFormatter::class),
 ];
