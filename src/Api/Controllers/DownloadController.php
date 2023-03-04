@@ -6,16 +6,16 @@ use Exception;
 use Flarum\Post\PostRepository;
 use Flarum\Settings\SettingsRepositoryInterface;
 use FoF\Upload\Api\Serializers\FileSerializer;
+use FoF\Upload\Repositories\FileRepository;
+use GBCLStudio\UploadExtQcloud\Configuration\QcloudConfiguration;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Arr;
+use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Laminas\Diactoros\Response\RedirectResponse;
-use GBCLStudio\UploadExtQcloud\Configuration\QcloudConfiguration;
-use FoF\Upload\Repositories\FileRepository;
 
 class DownloadController implements RequestHandlerInterface
 {
@@ -79,6 +79,7 @@ class DownloadController implements RequestHandlerInterface
         }
 
         $url = $this->QcloudConfig->generateUrl($file);
+
         return new RedirectResponse($url);
     }
 }

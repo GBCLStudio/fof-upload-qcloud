@@ -1,4 +1,5 @@
 <?php
+
 namespace GBCLStudio\UploadExtQcloud\Templates;
 
 use FoF\Upload\File;
@@ -6,7 +7,7 @@ use FoF\Upload\Templates\AbstractTextFormatterTemplate;
 
 class QcloudPdfTemplate extends AbstractTextFormatterTemplate
 {
-    public const templateName = "upl-qcloud-pdf";
+    public const templateName = 'upl-qcloud-pdf';
 
     /**
      * @var string
@@ -44,6 +45,7 @@ class QcloudPdfTemplate extends AbstractTextFormatterTemplate
     {
         return '[upl-qcloud-pdf uuid={IDENTIFIER} preview_uri={URL} fullscreen_uri={URL}]';
     }
+
     public function preview(File $file): string
     {
         return "[upl-qcloud-pdf uuid={$file->uuid} preview_uri={$file->url} fullscreen_uri={URL}]";

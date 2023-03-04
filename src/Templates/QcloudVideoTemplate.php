@@ -7,7 +7,7 @@ use FoF\Upload\Templates\AbstractTextFormatterTemplate;
 
 class QcloudVideoTemplate extends AbstractTextFormatterTemplate
 {
-    public const templateName = "upl-qcloud-video";
+    public const templateName = 'upl-qcloud-video';
 
     /**
      * @var string
@@ -49,6 +49,7 @@ class QcloudVideoTemplate extends AbstractTextFormatterTemplate
     {
         return '[upl-qcloud-video uuid={IDENTIFIER} preview_uri={URL} fullscreen_uri={URL}]';
     }
+
     public function preview(File $file): string
     {
         return "[upl-qcloud-video uuid={$file->uuid} preview_uri={$file->url} fullscreen_uri={URL}]";

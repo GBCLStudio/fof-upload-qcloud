@@ -2,18 +2,17 @@
 
 namespace GBCLStudio\UploadExtQcloud\Providers;
 
-use GBCLStudio\UploadExtQcloud\Configuration\QcloudConfiguration;
-use GBCLStudio\UploadExtQcloud\Templates\QcloudAudioTemplate;
-use GBCLStudio\UploadExtQcloud\Templates\QcloudVideoTemplate;
-use GBCLStudio\UploadExtQcloud\Templates\QcloudPdfTemplate;
-use GBCLStudio\UploadExtQcloud\Templates\QcloudPreviewTemplate;
-use GBCLStudio\UploadExtQcloud\Templates\QcloudDownloadTemplate;
 use Flarum\Foundation\AbstractServiceProvider;
 use FoF\Upload\Helpers\Util;
+use GBCLStudio\UploadExtQcloud\Configuration\QcloudConfiguration;
+use GBCLStudio\UploadExtQcloud\Templates\QcloudAudioTemplate;
+use GBCLStudio\UploadExtQcloud\Templates\QcloudDownloadTemplate;
+use GBCLStudio\UploadExtQcloud\Templates\QcloudPdfTemplate;
+use GBCLStudio\UploadExtQcloud\Templates\QcloudPreviewTemplate;
+use GBCLStudio\UploadExtQcloud\Templates\QcloudVideoTemplate;
 
 class QcloudProvider extends AbstractServiceProvider
 {
-
     public function register()
     {
         $this->container->singleton(QcloudConfiguration::class);

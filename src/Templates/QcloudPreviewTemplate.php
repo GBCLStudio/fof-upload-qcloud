@@ -7,7 +7,7 @@ use FoF\Upload\Templates\AbstractTextFormatterTemplate;
 
 class QcloudPreviewTemplate extends AbstractTextFormatterTemplate
 {
-    public const templateName = "upl-qcloud-preview";
+    public const templateName = 'upl-qcloud-preview';
 
     /**
      * @var string

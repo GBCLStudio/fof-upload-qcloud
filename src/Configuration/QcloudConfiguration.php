@@ -9,7 +9,6 @@ use FoF\Upload\File;
 
 class QcloudConfiguration
 {
-
     /**
      * @var string
      */
@@ -29,19 +28,18 @@ class QcloudConfiguration
         /**
          * @var SettingsRepositoryInterface $settings
          */
-
         $settings = app(SettingsRepositoryInterface::class);
 
-            $this->region = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.region', 'ap-beijing');
-            $this->secretId = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretId');
-            $this->secretKey = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretKey');
-            $this->appId = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.appId');
-            $this->cdn = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.domain');
-            $this->bucket = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.bucket');
-            $this->useHttps = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.useHttps', 'disableTls');
-            $this->fileSignatureToken = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureToken', '');
-            $this->fileSignatureTokenName = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTokenName', 'sign');
-            $this->fileSignatureTime = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTime', '1800');
+        $this->region = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.region', 'ap-beijing');
+        $this->secretId = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretId');
+        $this->secretKey = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretKey');
+        $this->appId = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.appId');
+        $this->cdn = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.domain');
+        $this->bucket = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.bucket');
+        $this->useHttps = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.useHttps', 'disableTls');
+        $this->fileSignatureToken = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureToken', '');
+        $this->fileSignatureTokenName = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTokenName', 'sign');
+        $this->fileSignatureTime = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTime', '1800');
 
         if ($this->region == null || strlen($this->region) == 0) {
             $this->region = 'ap-beijing';
@@ -51,7 +49,7 @@ class QcloudConfiguration
         }
         if ($this->useHttps == 'enableTls') {
             $this->useHttps = 'true';
-        }else{
+        } else {
             $this->useHttps = 'false';
         }
     }
@@ -66,8 +64,10 @@ class QcloudConfiguration
 
     /**
      * @param $signPath string
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
     public function signPath(string $signPath): string
     {
@@ -78,20 +78,23 @@ class QcloudConfiguration
             false
         );
         $time = time() + $this->fileSignatureTime;
-        return $auth->typeA($signPath,$time);
+
+        return $auth->typeA($signPath, $time);
     }
 
     /**
      * @param $file File
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
     public function generateUrl(File $file): string
     {
         if ($this->needSignature()) {
-            return $this->cdn . $this->signPath('/' . $file->path);
+            return $this->cdn.$this->signPath('/'.$file->path);
         } else {
-            return $this->cdn . '/' . $file->path;
+            return $this->cdn.'/'.$file->path;
         }
     }
 }

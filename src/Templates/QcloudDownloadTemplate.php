@@ -7,7 +7,7 @@ use FoF\Upload\Templates\AbstractTextFormatterTemplate;
 
 class QcloudDownloadTemplate extends AbstractTextFormatterTemplate
 {
-    public const templateName = "upl-qcloud-download";
+    public const templateName = 'upl-qcloud-download';
 
     /**
      * @var string
