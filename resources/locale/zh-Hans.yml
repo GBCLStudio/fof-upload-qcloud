@@ -68,5 +68,5 @@ gbcl-fof-upload-qcloud:
         name: COS 文件下载模板
         description: COS 文件下载模板
       pdf:
-        name: COS pdf文件预览模板
-        description: COS pdf文件预览模板
+        name: COS PDF 预览模板
+        description: COS PDF 预览模板
