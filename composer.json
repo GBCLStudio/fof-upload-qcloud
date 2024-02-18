@@ -1,0 +1,47 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "gbcl/fof-upload-qcloud",
+    "description": "FoF/upload TencentCloud COS support",
+    "keywords": [
+        "flarum",
+        "upload",
+        "file"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "big-dream/cdn-url-auth": "0.0.2",
+        "fof/upload": "^1.2",
+        "overtrue/flysystem-cos": "^3.0"
+    },
+    "authors": [
+        {
+            "name": "GBCLStudio",
+            "email": "gbclstudio@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/GBCLStudio/FoF-Upload-Qcloud/issues",
+        "source": "https://github.com/GBCLStudio/FoF-Upload-Qcloud"
+    },
+    "autoload": {
+        "psr-4": {
+            "GBCLStudio\\UploadExtQcloud\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+        "title": "FoF Upload QCloud",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-file-upload",
+                "backgroundColor": "#e74c3c",
+                "color": "#fff"
+            }
+        },
+        "flagrow": {
+            "discuss": "https://discuss.flarum.org.cn/d/4058"
+        }
+    }
+}

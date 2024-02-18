@@ -1,0 +1,73 @@
+fof-upload:
+  admin:
+    upload_methods:
+      qcloud: Tencent COS
+
+gbcl-fof-upload-qcloud:
+  forum:
+    pdf:
+      fallbackNotice1: This browser does not support inline PDFs. Please download the PDF to view it
+      fallbackNotice2: Click here to download PDF
+  admin:
+    labels:
+      qcloudLabel:
+        title: Tencent COS storage settings
+        region: region
+        regionOption:
+          ap-beijing: Beijing, China
+          ap-chengdu: Chengdu, China
+          ap-chongqing: Chongqing, China
+          ap-guangzhou: Guangzhou, China
+          ap-nanjing: Nanjing, China
+          ap-shanghai: Shanghai, China
+          ap-tokyo: Tokyo, Japan
+          eu-frankfurt: Frankfurt, Germany
+          na-siliconvalley: Silicon Valley, USA
+        useHttps: Whether to upload via Https
+        schemeOption:
+          enableTls: enable
+          disableTls: disable
+        secretId: secretId
+        secretKey: SecretKey
+        appId: Account ID
+        domain: bind CDN domain name
+        bucket: bucket name
+        fileRetrievingSignatureToken: file authentication key
+        fileRetrievingSignatureTokenName: file authentication key parameter
+        fileRetrievingSignatureTime: Valid time of file authentication link
+
+      qcloudHelp:
+        region: only supports most commonly used regions
+        secretId: You can find your SecretId on the personal secret key management page：https://console.cloud.tencent.com/capi
+        secretKey: You can find your SecretKey on the personal secret key management page：https://console.cloud.tencent.com/capi
+        appId: You can find your AppId on the personal key management page：https://console.cloud.tencent.com/capi
+        domain: Your COS CDN acceleration domain name (requires http:// or https:// prefix)
+        bucket: Your bucket name, your-bucketname-id.cos.region.xxx.com your-bucketname in this string
+        fileRetrievingSignatureToken: |-
+          (Optional) The anti-leech function can be realized by using the file authentication key.
+          This plugin uses method A as the file authentication method.
+          Please make sure that all settings have been completed before use.
+        fileRetrievingSignatureTokenName: |-
+          (Optional) Authentication parameters when using file authentication (such as domain.com/url.jpg?sign=xxx)
+          Please fill in according to the corresponding parameter settings.
+        fileRetrievingSignatureTime: |-
+          (Optional) Link expiration time when using file authentication, in seconds
+          Please fill in according to the corresponding parameter settings. If not filled, the default is 1800 seconds
+
+    template:
+      audio:
+        name: COS MP3 audio template
+        description: A template for playing COS MP3 audio
+      video-preview:
+        name: COS MP4 video preview template
+        description: A template for previewing COS MP4 videos
+      image-preview:
+        name: COS image preview template
+        description: COS image preview template
+      download:
+        name: COS file download template
+        description: COS file download template
+      pdf:
+        name: COS pdf file preview template
+        description: COS pdf file preview template
+

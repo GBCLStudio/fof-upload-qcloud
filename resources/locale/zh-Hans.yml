@@ -1,0 +1,72 @@
+fof-upload:
+  admin:
+    upload_methods:
+      qcloud: 腾讯COS
+
+gbcl-fof-upload-qcloud:
+  forum:
+    pdf:
+      fallbackNotice1: 您的浏览器不支持在线预览PDF文件，请点击以下链接来下载
+      fallbackNotice2: 点击此处下载PDF文件
+  admin:
+    labels:
+      qcloudLabel:
+        title: 腾讯 COS 存储设置
+        region: 区域
+        regionOption:
+          ap-beijing: 中国 北京
+          ap-chengdu: 中国 成都
+          ap-chongqing: 中国 重庆
+          ap-guangzhou: 中国 广州
+          ap-nanjing: 中国 南京
+          ap-shanghai: 中国 上海
+          ap-tokyo: 日本 东京
+          eu-frankfurt: 德国 法兰克福
+          na-siliconvalley: 美国 硅谷
+        useHttps: 是否通过 Https 上传
+        schemeOption:
+          enableTls: 是
+          disableTls: 否
+        secretId: secret Id
+        secretKey: Secret Key
+        appId: 账户 ID
+        domain: 绑定CDN域名
+        bucket: 存储桶名称
+        fileRetrievingSignatureToken: 文件鉴权密钥
+        fileRetrievingSignatureTokenName: 文件鉴权密钥参数
+        fileRetrievingSignatureTime: 文件鉴权链接有效时间
+
+      qcloudHelp:
+        region: 仅支持大部分常用区域
+        secretId: 您可以在个人秘钥管理页查看找到您的 SecretId ：https://console.cloud.tencent.com/capi
+        secretKey: 您可以在个人秘钥管理页查看找到您的 SecretKey ：https://console.cloud.tencent.com/capi
+        appId: 您可以在个人秘钥管理页查看找到您的 AppId ：https://console.cloud.tencent.com/capi
+        domain: 您的 COS CDN加速域名 （需要 http:// 或 https:// 前缀）
+        bucket: 你的存储桶名称，your-bucketname-id.cos.region.xxx.com 这一串中的 your-bucketname
+        fileRetrievingSignatureToken: |-
+          （可选的）使用文件鉴权密钥可以实现防盗链功能。
+          本插件使用方法 A 作为文件鉴权方式。
+          使用前请确保已经完成一切设置。
+        fileRetrievingSignatureTokenName: |-
+          （可选的）使用文件鉴权时的鉴权参数（如 domain.com/url.jpg?sign=xxx）
+          请根据对应参数设置进行填写。
+        fileRetrievingSignatureTime: |-
+          （可选的）使用文件鉴权时链接过期时间，单位为秒
+          请根据对应参数设置进行填写。若不填写，则默认为1800秒
+
+    template:
+      audio:
+        name: COS MP3 音频模板
+        description: 用于播放 上传到COS中的MP3 音频模板
+      video-preview:
+        name: COS MP4 视频预览模板
+        description: 用于预览 上传到COS中的MP4 视频模板
+      image-preview:
+        name: COS 图片预览模板
+        description: COS 图片预览模板
+      download:
+        name: COS 文件下载模板
+        description: COS 文件下载模板
+      pdf:
+        name: COS pdf文件预览模板
+        description: COS pdf文件预览模板
