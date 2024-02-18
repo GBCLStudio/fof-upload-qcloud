@@ -1,5 +1,5 @@
 {
-  "name": "@gbcl-fof-upload-qcloud",
+  "name": "gbcl-fof-upload-qcloud",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
