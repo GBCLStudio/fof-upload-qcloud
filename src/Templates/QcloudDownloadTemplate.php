@@ -4,6 +4,7 @@ namespace GBCLStudio\UploadExtQcloud\Templates;
 
 use FoF\Upload\File;
 use FoF\Upload\Templates\AbstractTextFormatterTemplate;
+use Illuminate\Contracts\View\View;
 
 class QcloudDownloadTemplate extends AbstractTextFormatterTemplate
 {
@@ -33,7 +34,7 @@ class QcloudDownloadTemplate extends AbstractTextFormatterTemplate
     /**
      * {@inheritdoc}
      */
-    public function template(): string
+    public function template(): View
     {
         return $this->getView('gbcl-fof-upload-qcloud.templates::qcloud-download');
     }
@@ -48,6 +49,6 @@ class QcloudDownloadTemplate extends AbstractTextFormatterTemplate
 
     public function preview(File $file): string
     {
-        return "[upl-qcloud-download uuid={$file->uuid} name={$file->base_name} size={$file->humanSize}]";
+        return "[upl-qcloud-download uuid=$file->uuid name=$file->base_name size=$file->humanSize]";
     }
 }

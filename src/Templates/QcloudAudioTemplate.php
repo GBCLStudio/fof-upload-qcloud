@@ -4,6 +4,7 @@ namespace GBCLStudio\UploadExtQcloud\Templates;
 
 use FoF\Upload\File;
 use FoF\Upload\Templates\AbstractTextFormatterTemplate;
+use Illuminate\Contracts\View\View;
 
 class QcloudAudioTemplate extends AbstractTextFormatterTemplate
 {
@@ -33,9 +34,9 @@ class QcloudAudioTemplate extends AbstractTextFormatterTemplate
     /**
      * The xsl template to use with this tag.
      *
-     * @return string
+     * @return View
      */
-    public function template(): string
+    public function template(): View
     {
         return $this->getView('gbcl-fof-upload-qcloud.templates::qcloud-audio');
     }
@@ -52,6 +53,6 @@ class QcloudAudioTemplate extends AbstractTextFormatterTemplate
 
     public function preview(File $file): string
     {
-        return "[upl-qcloud-audio uuid={$file->uuid} preview_uri={$file->url} fullscreen_uri={URL}]";
+        return "[upl-qcloud-audio uuid=$file->uuid preview_uri=$file->url fullscreen_uri={URL}]";
     }
 }
