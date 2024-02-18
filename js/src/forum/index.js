@@ -1,6 +1,6 @@
 import app from "flarum/forum/app";
 import load from "external-load";
-import PDFObject from "PDFObject";
+import PDFObject from "pdfobject";
 import { playerData } from "./extensions";
 import CommentPost from "flarum/forum/components/CommentPost";
 import { extend } from "flarum/common/extend";

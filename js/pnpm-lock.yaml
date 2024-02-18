@@ -11,6 +11,9 @@ dependencies:
   flarum-webpack-config:
     specifier: ^2.0.0
     version: 2.0.2(webpack@5.90.2)
+  pdfobject:
+    specifier: ^2.3.0
+    version: 2.3.0
   webpack:
     specifier: ^5.88.1
     version: 5.90.2(webpack-cli@5.1.4)
@@ -2169,6 +2172,10 @@ packages:
 
   /path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
+    dev: false
+
+  /pdfobject@2.3.0:
+    resolution: {integrity: sha512-w/9pXDXTDs3IDmOri/w8lM/w6LHR0/F4fcBLLzH+4csSoyshQ5su0TE7k0FLHZO7aOjVLDGecqd1M89+PVpVAA==}
     dev: false
 
   /picocolors@1.0.0:
