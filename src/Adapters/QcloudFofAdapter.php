@@ -49,7 +49,7 @@ class QcloudFofAdapter extends Flysystem implements UploadAdapter
     /**
      * @throws Exception
      */
-    protected function generateUrl(File $file)
+    protected function generateUrl(File $file): void
     {
         $file->url = $this->pluginConfig->generateUrl($file);
     }
