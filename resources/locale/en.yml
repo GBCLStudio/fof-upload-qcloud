@@ -12,7 +12,7 @@ gbcl-fof-upload-qcloud:
     labels:
       qcloudLabel:
         title: Tencent COS storage settings
-        region: region
+        region: Region
         regionOption:
           ap-beijing: Beijing, China
           ap-chengdu: Chengdu, China
@@ -27,13 +27,13 @@ gbcl-fof-upload-qcloud:
         schemeOption:
           enableTls: enable
           disableTls: disable
-        secretId: secretId
+        secretId: SecretId
         secretKey: SecretKey
         appId: Account ID
-        domain: bind CDN domain name
-        bucket: bucket name
-        fileRetrievingSignatureToken: file authentication key
-        fileRetrievingSignatureTokenName: file authentication key parameter
+        domain: Binding CDN domain name
+        bucket: Bucket name
+        fileRetrievingSignatureToken: File authentication key
+        fileRetrievingSignatureTokenName: File authentication key parameter
         fileRetrievingSignatureTime: Valid time of file authentication link
 
       qcloudHelp:
