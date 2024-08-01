@@ -19,7 +19,7 @@ export default function () {
 
         let url = app.forum.attribute('apiUrl') + '/gbcl/fof-qcloud/download';
 
-        url += '/' + encodeURIComponent(e.currentTarget.dataset.fofQcloudUploadDownloadUuid);
+        url += '/' + encodeURIComponent(String(e.currentTarget.dataset.fofQcloudUploadDownloadUuid));
         url += '/' + encodeURIComponent(this.attrs.post.id());
         url += '/' + encodeURIComponent(app.session.csrfToken);
 
