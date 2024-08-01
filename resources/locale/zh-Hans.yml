@@ -42,16 +42,16 @@ gbcl-fof-upload-qcloud:
         secretKey: 您可以在个人秘钥管理页查看找到您的 SecretKey ：https://console.cloud.tencent.com/capi
         appId: 您可以在个人秘钥管理页查看找到您的 AppId ：https://console.cloud.tencent.com/capi
         domain: 您的 COS CDN加速域名 （需要 http:// 或 https:// 前缀）
-        bucket: 你的存储桶名称，your-bucketname-id.cos.region.xxx.com 这一串中的 your-bucketname
+        bucket: 你的存储桶名称，your-bucketName-bucketID.cos.region.xxx.com 这一串中的 your-bucketName
         fileRetrievingSignatureToken: |-
-          （可选的）使用文件鉴权密钥可以实现防盗链功能。
+          （可选）使用文件鉴权密钥可以实现防盗链功能。
           本插件使用方法 A 作为文件鉴权方式。
           使用前请确保已经完成一切设置。
         fileRetrievingSignatureTokenName: |-
-          （可选的）使用文件鉴权时的鉴权参数（如 domain.com/url.jpg?sign=xxx）
+          （可选）使用文件鉴权时的鉴权参数（如 domain.com/url.jpg?sign=xxx）
           请根据对应参数设置进行填写。
         fileRetrievingSignatureTime: |-
-          （可选的）使用文件鉴权时链接过期时间，单位为秒
+          （可选）使用文件鉴权时链接过期时间，单位为秒
           请根据对应参数设置进行填写。若不填写，则默认为1800秒
 
     template:

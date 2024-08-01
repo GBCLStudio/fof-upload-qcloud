@@ -37,12 +37,12 @@ gbcl-fof-upload-qcloud:
         fileRetrievingSignatureTime: Valid time of file authentication link
 
       qcloudHelp:
-        region: only supports most commonly used regions
+        region: Only supports most commonly used regions
         secretId: You can find your SecretId on the personal secret key management page：https://console.cloud.tencent.com/capi
         secretKey: You can find your SecretKey on the personal secret key management page：https://console.cloud.tencent.com/capi
         appId: You can find your AppId on the personal key management page：https://console.cloud.tencent.com/capi
         domain: Your COS CDN acceleration domain name (requires http:// or https:// prefix)
-        bucket: Your bucket name, your-bucketname-id.cos.region.xxx.com your-bucketname in this string
+        bucket: Your bucket name, your-bucketName-bucketId.cos.region.xxx.com your-bucketName in this string
         fileRetrievingSignatureToken: |-
           (Optional) The anti-leech function can be realized by using the file authentication key.
           This plugin uses method A as the file authentication method.
