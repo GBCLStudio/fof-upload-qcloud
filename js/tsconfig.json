@@ -1,12 +1,24 @@
 {
-    "extends": "flarum-tsconfig",
-    "include": ["src/**/*", "../vendor/flarum/core/js/dist-typings/@types/**/*"],
+  "extends": "flarum-tsconfig",
+  "include": [
+    "src/**/*",
+    "../vendor/flarum/core/js/dist-typings/@types/**/*"
+  ],
+  "compilerOptions": {
+    "module": "ESNext",
+    "declarationDir": "./dist-typings",
+    "target": "es5",
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "flarum/*": [
+        "../vendor/flarum/core/js/dist-typings/*"
+      ]
+    }
+  },
+  "ts-node": {
     "compilerOptions": {
-      "declarationDir": "./dist-typings",
-      "baseUrl": ".",
-      "paths": {
-        "flarum/*": ["../vendor/flarum/core/js/dist-typings/*"]
-      }
+      "module": "CommonJS"
     }
   }
-  
+}
