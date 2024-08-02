@@ -12,6 +12,7 @@
     "require": {
         "big-dream/cdn-url-auth": "0.0.2",
         "fof/upload": "^1.2",
+        "php": "^8.0",
         "overtrue/flysystem-cos": "^3.0"
     },
     "authors": [
