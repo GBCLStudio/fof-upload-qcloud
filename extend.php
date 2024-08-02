@@ -31,6 +31,13 @@ return [
     (new Extend\Event())
         ->listen(Collecting::class, AdapterRegisterListener::class)
         ->listen(Instantiate::class, AdapterInstantiateListener::class),
+    
+    (new Extend\Settings())
+        ->default('gbcl-fof-upload-qcloud.qcloudConfig.secretKey', '')
+        ->default('gbcl-fof-upload-qcloud.qcloudConfig.secretId', '')
+        ->default('gbcl-fof-upload-qcloud.qcloudConfig.bucket', '')
+        ->default('gbcl-fof-upload-qcloud.qcloudConfig.appId', '')
+        ->default('gbcl-fof-upload-qcloud.qcloudConfig.domain', ''),
 
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),

@@ -23,7 +23,10 @@ class QcloudFofAdapter extends Flysystem implements UploadAdapter
      */
     public function __construct($pluginConfig)
     {
-        $config = new QcloudConfiguration();
+        /**
+         * @var QcloudConfiguration $pluginConfig
+         */
+        $config = app(QcloudConfiguration::class);
 
         $arrConfig = [
             'region'     => $config->region,

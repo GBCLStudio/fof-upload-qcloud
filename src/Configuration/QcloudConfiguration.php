@@ -6,6 +6,7 @@ use bigDream\CdnUrlAuth\Tencent;
 use Exception;
 use Flarum\Settings\SettingsRepositoryInterface;
 use FoF\Upload\File;
+use FoF\Upload\Helpers\Util;
 
 class QcloudConfiguration
 {
@@ -23,13 +24,8 @@ class QcloudConfiguration
     public string $fileSignatureTokenName;
     public $fileSignatureTime;
 
-    public function __construct()
+    public function __construct(private SettingsRepositoryInterface $settings, private Util $util)
     {
-        /**
-         * @var SettingsRepositoryInterface $settings
-         */
-        $settings = app(SettingsRepositoryInterface::class);
-
         $this->region = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.region', 'ap-beijing');
         $this->secretId = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretId');
         $this->secretKey = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.secretKey');
@@ -41,17 +37,9 @@ class QcloudConfiguration
         $this->fileSignatureTokenName = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTokenName', 'sign');
         $this->fileSignatureTime = $settings->get('gbcl-fof-upload-qcloud.qcloudConfig.fileRetrievingSignatureTime', '1800');
 
-        if ($this->region == null || strlen($this->region) == 0) {
-            $this->region = 'ap-beijing';
-        }
-        if ($this->fileSignatureTime == null || $this->fileSignatureTime == 0) {
-            $this->fileSignatureTime = '1800';
-        }
-        if ($this->useHttps == 'enableTls') {
-            $this->useHttps = 'true';
-        } else {
-            $this->useHttps = 'false';
-        }
+        $this->region = (empty($this->region)) ? 'ap-beijing' : $this->region;
+        $this->fileSignatureTime = ($this->fileSignatureTime === null || $this->fileSignatureTime === 0) ? '1800' : $this->fileSignatureTime;
+        $this->useHttps = ($this->useHttps === 'enableTls') ? 'true' : 'false';
     }
 
     /**
@@ -60,6 +48,17 @@ class QcloudConfiguration
     public function needSignature(): bool
     {
         return $this->fileSignatureToken != null && strlen($this->fileSignatureToken) > 0;
+    }
+
+    public function isAdapterAndTemplateEnabled(): bool
+    {
+        $mimeTypesConfig = $this->util->getMimeTypesConfiguration();
+        return $mimeTypesConfig->filter(function ($item) {
+            return is_array($item) &&
+                   isset($item['adapter'], $item['template']) &&
+                   strpos($item['adapter'], 'qcloud') !== false &&
+                   strpos($item['template'], 'qcloud-') === 0;
+        })->isNotEmpty();
     }
 
     /**
@@ -92,6 +91,7 @@ class QcloudConfiguration
     public function generateUrl(File $file): string
     {
         if ($this->needSignature()) {
+            if (!$this->isAdapterAndTemplateEnabled()) throw new \InvalidArgumentException('You need to enable adapter and template for qcloud');
             return $this->cdn.$this->signPath('/'.$file->path);
         } else {
             return $this->cdn.'/'.$file->path;
