@@ -2,35 +2,43 @@ import DPlayer from 'dplayer';
 import Component, { ComponentAttrs } from 'flarum/common/Component';
 
 export interface VideoPlayerAttrs extends ComponentAttrs {
-    videoContainer: HTMLElement,
-    resourceUrl: string
+    videoContainer: HTMLElement;
+    resourceUrl: string;
 }
 
 export default class VideoPlayer<
-CustomAttrs extends VideoPlayerAttrs = VideoPlayerAttrs
+    CustomAttrs extends VideoPlayerAttrs = VideoPlayerAttrs
 > extends Component<CustomAttrs> {
+    private player?: DPlayer;
+
+    oncreate() {
+        const { videoContainer, resourceUrl } = this.attrs;
+        this.player = createVideoDiv(videoContainer, resourceUrl);
+    }
+
+    onremove() {
+        if (this.player) {
+            this.player.destroy();
+        }
+    }
+
     view() {
-        const { videoContainer, resourceUrl } = this.attrs
-        return (
-            <div className='UploadQcloud-dplayer-container'>
-                {createVideoDiv(videoContainer, resourceUrl)}
-            </div>
-        )
+        return <div />;
     }
 }
 
-const createVideoDiv = (videoContainer: HTMLElement, url: string) => {
+const createVideoDiv = (videoContainer: HTMLElement, url: string): DPlayer => {
     return new DPlayer({
         container: videoContainer,
         video: {
             url: url,
-            type: 'auto'
+            type: 'auto',
         },
         autoplay: false,
         mutex: true,
         loop: false,
         hotkey: true,
         preload: 'auto',
-        volume: 0.7
-    })
+        volume: 0.7,
+    });
 }

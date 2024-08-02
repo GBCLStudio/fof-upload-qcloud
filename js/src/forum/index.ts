@@ -14,7 +14,7 @@ const createComponentIfNeeded = (containers: NodeListOf<Element>, type: componen
 };
 
 app.initializers.add("gbcl-fof-upload-qcloud", () => {
-downloadButtonInteraction();
+  downloadButtonInteraction();
 
   extend(CommentPost.prototype, "refreshContent", () => {
     const playerContainers = document.querySelectorAll(".qcloud-player-container")

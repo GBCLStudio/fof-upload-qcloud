@@ -1,13 +1,12 @@
 import AdminApplication from 'flarum/admin/AdminApplication';
 import app from 'flarum/admin/app'
-type App = AdminApplication
 
-app.initializers.add('gbcl-fof-upload-qcloud', function (app: App) {
+const setting = (s: string) => String(app.translator.trans(`gbcl-fof-upload-qcloud.qcloudConfig.${s}`))
+const label = (s: string) => app.translator.trans(`gbcl-fof-upload-qcloud.admin.labels.qcloudLabel.${s}`)
+const help = (s: string) => app.translator.trans(`gbcl-fof-upload-qcloud.admin.labels.qcloudHelp.${s}`)
 
-    const setting = (s: string) => String(app.translator.trans(`gbcl-fof-upload-qcloud.qcloudConfig.${s}`))
-    const label = (s: string) => app.translator.trans(`gbcl-fof-upload-qcloud.admin.labels.qcloudLabel.${s}`)
-    const help = (s: string) => app.translator.trans(`gbcl-fof-upload-qcloud.admin.labels.qcloudHelp.${s}`)
 
+app.initializers.add('gbcl-fof-upload-qcloud', function (app: AdminApplication) {
     app.extensionData
         .for('gbcl-fof-upload-qcloud')
         .registerSetting(
